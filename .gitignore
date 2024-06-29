@@ -1,0 +1,9 @@
+node_modules
+add_provider/node_modules
+add_machine/node_modules
+provider/node_modules
+
+.env
+add_machine/.env
+add_provider/.env
+machine/.env
