@@ -672,19 +672,6 @@ const contractAbi = [
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "newGpuID",
-				"type": "uint256"
-			}
-		],
-		"name": "UpdatedGpuId",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
 				"name": "gpuID",
 				"type": "uint256"
 			},
@@ -801,129 +788,18 @@ const contractAbi = [
 		"inputs": [
 			{
 				"indexed": false,
-				"internalType": "uint256",
-				"name": "newJobId",
-				"type": "uint256"
-			}
-		],
-		"name": "UpdatedJobId",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "newGracePeriod",
-				"type": "uint256"
-			}
-		],
-		"name": "UpdatedLatencyPeriod",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "newMachineId",
-				"type": "uint256"
-			}
-		],
-		"name": "UpdatedMachineId",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "machineInfoId",
-				"type": "uint256"
-			}
-		],
-		"name": "UpdatedMachineInfoId",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "newMaxUnavailability",
-				"type": "uint256"
-			}
-		],
-		"name": "UpdatedMaxMachineUnavailability",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "newMinDrillTestRange",
-				"type": "uint256"
-			}
-		],
-		"name": "UpdatedMinDrillTestValue",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "newMinAvailability",
-				"type": "uint256"
-			}
-		],
-		"name": "UpdatedMinMachineAvailability",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
 				"internalType": "address",
-				"name": "newNftAddress",
+				"name": "validator",
 				"type": "address"
-			}
-		],
-		"name": "UpdatedNftAddress",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
+			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "newTickSeconds",
+				"name": "nftCount",
 				"type": "uint256"
 			}
 		],
-		"name": "UpdatedTickSeconds",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "newUserId",
-				"type": "uint256"
-			}
-		],
-		"name": "UpdatedUserId",
+		"name": "UpdatedValidatorNFTCount",
 		"type": "event"
 	},
 	{
@@ -1027,6 +903,11 @@ const contractAbi = [
 		"inputs": [
 			{
 				"components": [
+					{
+						"internalType": "uint256",
+						"name": "machineInfoId",
+						"type": "uint256"
+					},
 					{
 						"internalType": "uint256",
 						"name": "gpuID",
@@ -1355,25 +1236,6 @@ const contractAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "validatorNFTAddress",
-				"type": "address"
-			}
-		],
-		"name": "getSS58address",
-		"outputs": [
-			{
-				"internalType": "string[]",
-				"name": "",
-				"type": "string[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "getValidators",
 		"outputs": [
@@ -1682,6 +1544,11 @@ const contractAbi = [
 		"outputs": [
 			{
 				"internalType": "uint256",
+				"name": "machineInfoId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
 				"name": "gpuID",
 				"type": "uint256"
 			},
@@ -1767,6 +1634,11 @@ const contractAbi = [
 		],
 		"name": "machines",
 		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "machineId",
+				"type": "uint256"
+			},
 			{
 				"internalType": "uint256",
 				"name": "machineInfoID",
@@ -2284,6 +2156,19 @@ const contractAbi = [
 		"inputs": [
 			{
 				"internalType": "address",
+				"name": "validator",
+				"type": "address"
+			}
+		],
+		"name": "updateValidatorNFTCount",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
 				"name": "newImplementation",
 				"type": "address"
 			},
@@ -2346,13 +2231,13 @@ const contractAbi = [
 		"name": "validators",
 		"outputs": [
 			{
-				"internalType": "uint256",
-				"name": "maxNFTCount",
-				"type": "uint256"
+				"internalType": "string",
+				"name": "ss58Address",
+				"type": "string"
 			},
 			{
 				"internalType": "uint256",
-				"name": "usedNFTCount",
+				"name": "NFTCount",
 				"type": "uint256"
 			}
 		],

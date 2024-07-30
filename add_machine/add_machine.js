@@ -52,6 +52,7 @@ const AddMachine = async () => {
         }
 
         const machineDetailsArray = [
+            1, // MachineInfoId overwritten in contract
             machineInfo.gpuId,
             parseInt(machineInfo.gpuQuantity, 10),
             parseInt(machineInfo.gpuMemory, 10),

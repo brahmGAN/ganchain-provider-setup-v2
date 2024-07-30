@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt update -y &> /dev/null
+
 gpu_name=$(nvidia-smi --query-gpu=name --format=csv,noheader | head -n 1)
 
 gpu_memory=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n 1)
