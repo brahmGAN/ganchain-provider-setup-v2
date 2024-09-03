@@ -1,7 +1,7 @@
 const { Web3 } = require('web3');
 const axios = require('axios')
 const { exec } = require('child_process');
-require('dotenv').config();
+require("dotenv").config({ path: "./default.env" });
 
 const { contractAbi } = require('./contract_abi.js');
 

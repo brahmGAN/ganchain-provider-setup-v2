@@ -3,7 +3,6 @@ module.exports = {
     {
       name: "machine",
       script: "machine.js",
-      env_file: "default.env",
       watch: true,
       ignore_watch: ["node_modules", "logs"],
       instances: 1,
