@@ -33,7 +33,7 @@ PRIVATE_KEY=$2
 MACHINE_ID=$3
 
 # Start the application using PM2
-pm2 start ecosystem.config.js --name "machine" -- -w "$WALLET_ADDRESS" -p "$PRIVATE_KEY" -m "$MACHINE_ID"
+pm2 start pm2.config.js --name "machine" -- -w "$WALLET_ADDRESS" -p "$PRIVATE_KEY" -m "$MACHINE_ID"
 
 if [ $? -eq 0 ]; then
     echo "Application started successfully with PM2."
