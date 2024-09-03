@@ -13,8 +13,8 @@ if [ ${user_type} == "queens" ]; then
     # if [ -d /root/inference_results_v3.0 ]; then
     #     sudo rm -rf /root/inference_results_v3.0
     # fi
-    sed -i "s#${queen_public_key}##" /root/.ssh/authorized_keys
-    sed -i '/^$/d' /root/.ssh/authorized_keys
+    sed -i "s#${queen_public_key}##" /$HOME/.ssh/authorized_keys
+    sed -i '/^$/d' /$HOME/.ssh/authorized_keys
     exit 0
 fi
 

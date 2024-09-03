@@ -14,15 +14,15 @@ ufw allow ssh
 # disable PasswordAuthentication
 sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/" /etc/ssh/sshd_config
 
-if [ ${user_type} == "queens" ]; then
-    # Append public key to authorized_keys
-	mkdir -p /root/.ssh
-    sh -c "echo ${public_key} >> /root/.ssh/authorized_keys"
-
+if [ "${user_type}" == "queens" ]; then
+    # Append public key to the current user's authorized_keys
+    mkdir -p "$HOME/.ssh"
+    sh -c "echo ${public_key} >> $HOME/.ssh/authorized_keys"
+    
     # Restart sshd service
     systemctl restart sshd || systemctl restart ssh
-
-    echo SSHSetup complete for user : ${user_name}
+    
+    echo "SSH setup complete for user: ${user_name}"
     exit 0
 fi
 

@@ -241,6 +241,8 @@ const AddMachineWaitUntilAvailable = async () => {
         }
 
         await deleteSSHSetup("queens", queenUserName, queenPublicKey);
+
+        console.log(`Drill Test Complete, machineId: ${machineId}`);
     }
 
     catch (error) {
