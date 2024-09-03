@@ -32,6 +32,8 @@ WALLET_ADDRESS=$1
 PRIVATE_KEY=$2
 MACHINE_ID=$3
 
+npm install
+
 # Start the application using PM2
 pm2 start machine.js -- -w "$WALLET_ADDRESS" -p "$PRIVATE_KEY" -m "$MACHINE_ID"
 
