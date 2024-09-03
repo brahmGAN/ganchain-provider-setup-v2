@@ -3,7 +3,7 @@ const { contractAbi } = require('./contract_abi.js');
 const yargs = require('yargs');
 const { exec } = require('child_process');
 const Timer = require('timers/promises')
-require('dotenv').config();
+require("dotenv").config({ path: "./default.env" });
 
 
 const providerUrl = process.env.PROVIDER_URL;
