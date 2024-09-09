@@ -5,10 +5,21 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# Install Node.js and npm
+install_node() {
+    echo "Installing Node.js v20 and npm..."
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    if [ $? -ne 0 ]; then
+        echo "Failed to install Node.js and npm. Please check your system configuration and try again."
+        exit 1
+    fi
+    echo "Node.js v20 and npm installed successfully."
+}
+
 # Check if npm is installed
 if ! command_exists npm; then
-    echo "npm is not installed. Please install Node.js and npm first."
-    exit 1
+    install_node
 fi
 
 # Check if PM2 is installed, if not install it globally
