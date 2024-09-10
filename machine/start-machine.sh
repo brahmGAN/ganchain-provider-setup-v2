@@ -25,7 +25,7 @@ fi
 # Check if PM2 is installed, if not install it globally
 if ! command_exists pm2; then
     echo "PM2 is not installed. Installing PM2 globally..."
-    npm install -g pm2
+    sudo npm install -g pm2
     if [ $? -ne 0 ]; then
         echo "Failed to install PM2. Please check your npm configuration and try again."
         exit 1
