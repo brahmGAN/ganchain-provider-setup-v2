@@ -58,6 +58,7 @@ const AddMachine = async () => {
             parseInt(machineInfo.gpuMemory, 10),
             machineInfo.connectionType,
             machineInfo.cpuName,
+            parseInt(machineInfo.RAM, 10),
             parseInt(machineInfo.cpuCoreCount, 10),
             parseInt(Number(machineInfo.uploadBandWidth), 10),
             parseInt(Number(machineInfo.downloadBandWidth), 10),
