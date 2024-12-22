@@ -4,6 +4,8 @@ sudo apt update -y &> /dev/null
 
 gpu_name=$(nvidia-smi --query-gpu=name --format=csv,noheader | head -n 1)
 
+gpu_quantity=$(nvidia-smi --query-gpu=gpu_name --format=csv,noheader | wc -l)
+
 gpu_memory=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n 1)
 
 if ! command -v bc &> /dev/null
@@ -47,9 +49,9 @@ upload_speed_mbps=$(echo "scale=2; $upload_speed / 1048576" | bc -l)
 ip_address=$(curl -s https://ipinfo.io/ip)
 
 declare -A machine_info
-[[ ! -z "$gpu_name" ]] && machine_info[gpuName]=$gpu_name || machine_info[gpuName]="A100"
-machine_info[gpuQuantity]=1
-[[ ! -z "$gpu_memory_gb" ]] && machine_info[gpuMemory]=$gpu_memory_gb || machine_info[gpuMemory]=100
+[[ ! -z "$gpu_name" ]] && machine_info[gpuName]=$gpu_name
+machine_info[gpuQuantity]=$gpu_quantity
+[[ ! -z "$gpu_memory_gb" ]] && machine_info[gpuMemory]=$gpu_memory_gb
 machine_info[connectionType]="PCIe"
 machine_info[cpuName]=$cpu_name
 machine_info[cpuCoreCount]=$cpu_cores
